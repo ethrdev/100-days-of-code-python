@@ -1,93 +1,113 @@
-#### Functions with Output
+## =====================================================
+##             Funktionen mit Ausgabe (Output)
+## =====================================================
 
-# We've seen functions with only an execution body, functions with inputs that allow for variation in execution of the function 
-# body and now we'll see the final form of functions. Functions that can have outputs.
+# In diesem Abschnitt werden Funktionen vorgestellt, die Eingaben verarbeiten und einen Rückgabewert (Output) liefern.
+# Wir haben bereits Funktionen ohne Rückgabewert und Funktionen mit variablen Eingaben kennengelernt – hier ergänzen wir dies durch Funktionen, die ein Ergebnis zurückliefern.
 
-# Syntax
-# You can create a function with a body, input and output like this:
+## =====================================================
+##             Syntax für Funktionen mit Output
+## =====================================================
 
+# Beispiel-Syntax:
 '''
 def function_name(input_parameter):
     <body of function that uses input_argument>
     return output
 '''
+# Diese Syntax zeigt, wie man eine Funktion mit Eingabeparametern und einem Rückgabewert definiert.
 
+## =====================================================
+##             Funktion: format_name
+## =====================================================
 
-# Create a function called format_name() that takes two inputs: f_name and `l_name'.
+# Erstelle eine Funktion format_name(), die zwei Eingabeparameter (f_name und l_name) entgegennimmt.
 def format_name(f_name, l_name):
-    # Use the title() function to modify the f_name and l_name parameters into Title Case.
-    # We are tronsform the input into a title case and when the function is called, it will create an output.
-    # The output will be stored in the variables formated_f_name and formated_l_name.
+    # Verwende die Methode title(), um die Eingabeparameter f_name und l_name in Title Case umzuwandeln.
+    # Die formatierten Namen werden in den Variablen formated_f_name und formated_l_name gespeichert.
     formated_f_name = f_name.title()
     formated_l_name = l_name.title()  
     
-    # The formatted string becomes the output of the function.
+    # Der formatierte String wird als Rückgabewert der Funktion zurückgegeben.
     return f"{formated_f_name} {formated_l_name}"
 
-# It replaces the part of the code where the function was called.
-# format_name(f_name = "etHer", l_name = "DeV") # Ether Dev
+## =====================================================
+##             Aufruf der Funktion format_name
+## =====================================================
+
+# Hier wird der Funktionsaufruf demonstriert. Der Rückgabewert ersetzt den Funktionsaufruf.
+# Beispiel:
+# format_name(f_name = "etHer", l_name = "DeV") # Ergibt "Ether Dev"
 formated_string = format_name(f_name = "etHer", l_name = "DeV")    
 print(formated_string)
-# OR
-print(format_name(f_name = "etHer", l_name = "DeV"))  
+# Alternativ kann der Funktionsaufruf direkt in print() eingebettet werden:
+print(format_name(f_name = "etHer", l_name = "DeV"))
 
+## =====================================================
+##             Beispiele bekannter Funktionen mit Ausgabe
+## =====================================================
 
-### Examples of already known functions with output
-# The len() function returns the length of an object.
-# "Hello" is the input, len is the function
-# Once the function is completed, the return will replace the len("Hello") cody by the output of the function.
-# The output will get stored in the variable output.
+# Die built-in Funktion len() gibt die Länge eines Objekts zurück.
+# Beispiel: Der Rückgabewert von len("Hello") ersetzt den Funktionsaufruf und wird in der Variable output gespeichert.
 output = len("Hello")
 
-##Print vs. Output
-# Return vs. Display: The return statement is used to give back a value from a function, which can be used later, 
-# while print is used to display a value to the console only for the programmer to see.
+## =====================================================
+##             Print vs. Output
+## =====================================================
+
+# Unterschied zwischen return und print:
+# - return: Gibt einen Wert aus der Funktion zurück, der später weiterverwendet werden kann.
+# - print: Zeigt einen Wert in der Konsole an, dient hauptsächlich zur Ausgabe für den Programmierer.
+
+## =====================================================
+##             Funktionen: function_1 und function_2
+## =====================================================
 
 def function_1(text):
-    return text + text # "hellohello"
+    # Diese Funktion verdoppelt den übergebenen Text.
+    return text + text  # Beispiel: "hello" -> "hellohello"
 
 def function_2(text):
-    return text.title() # Hello
+    # Diese Funktion gibt den übergebenen Text in Title Case zurück.
+    return text.title()  # Beispiel: "hello" -> "Hello"
 
-# Neithe rof these functions have a print statement
+## =====================================================
+##             Verkettung von Funktionen
+## =====================================================
 
-# We call the first function and pass in "hello" and save it to an output variable
-# output = function_1("hello")
-# print(output) # hellohello
-
-# What if we take the output of function_1 and reuse it as an input into function_2?
-# The output of function_1 is in fact a string and is a piece of 'text'
-# So we can put it in the function_2 as an input
-
-# So now the output of function_1 becomes the input of function_2 and then that input is title-cased
+# Hier wird gezeigt, wie der Rückgabewert einer Funktion als Eingabe für eine andere Funktion verwendet werden kann.
+# Der Output von function_1 ("hellohello") wird als Input in function_2 übergeben, um den Text zu formatieren.
 output = function_2(function_1("hello"))
-print(output) # Hellohello
+print(output)  # Ausgabe: "Hellohello"
 
+## =====================================================
+##             Mehrere Rückgabewerte (Multiple return values)
+## =====================================================
 
+# Eine Funktion beendet ihre Ausführung, sobald der return-Befehl erreicht wird.
+# Jeglicher Code nach einem return wird nicht ausgeführt.
+# Durch Kontrollfluss (if/else) können mehrere return-Anweisungen innerhalb einer Funktion vorhanden sein.
 
-### Multiple return values
+## =====================================================
+##             Bedingte Rückgaben (Conditional Returns)
+## =====================================================
 
-# Functions terminate at the return keyword. 
-# If you write code below the return statement that code will not be executed.
-# However, you can have multiple return statements in one function. So how does that work?
-
-## Conditional Returns
-# When we have control flow, as in the code will behave differently (go down different execution paths) depending on certain 
-# conditional checks, we can end up with multiple endings (returns).
-# e.g.
-
+# Diese Funktion prüft, ob eine Person alkoholische Getränke kaufen darf.
+# Je nach Alter wird True (Erlaubnis) oder False (keine Erlaubnis) zurückgegeben.
 def canBuyAlcohol(age):
     if age >= 18:
         return True
     else:
         return False
 
-## Empty Returns
-# You can also write return without anything afterwards, and this just tells the function to exit.
-# e.g.
+## =====================================================
+##             Leere Rückgaben (Empty Returns)
+## =====================================================
 
+# In dieser Variante der Funktion wird zusätzlich geprüft, ob der Eingabeparameter age vom Typ int ist.
+# Ist dies nicht der Fall, beendet return ohne einen Wert zurückzugeben.
 def canBuyAlcohol(age):
-    # If the data type of the age input is not a int, then exit and return nothing.
+    # Überprüfe den Datentyp des Parameters age; wenn nicht int, wird die Funktion beendet.
     if type(age) != int:
         return
 
@@ -96,40 +116,46 @@ def canBuyAlcohol(age):
     else:
         return False
     
-## Challenge: Check for leap years   
+## =====================================================
+##             Challenge: Überprüfung von Schaltjahren
+## =====================================================
+
 def is_leap_year(year):
-    if year % 400 == 0:  # Alle durch 400 teilbaren Jahre sind Schaltjahre
+    # Ein Jahr, das durch 400 teilbar ist, ist immer ein leap year.
+    if year % 400 == 0:  
         return True
-    if year % 100 == 0:  # Alle durch 100 teilbaren Jahre sind KEINE Schaltjahre (au�er durch 400 teilbare)
+    # Ein Jahr, das durch 100 teilbar ist, aber nicht durch 400, ist kein leap year.
+    if year % 100 == 0:  
         return False
-    if year % 4 == 0:  # Alle durch 4 teilbaren Jahre sind Schaltjahre
+    # Ein Jahr, das durch 4 teilbar ist, ist ein leap year.
+    if year % 4 == 0:  
         return True
-    return False  # Alle anderen Jahre sind keine Schaltjahre
+    # Alle anderen Jahre sind keine leap years.
+    return False
         
-# Testfall
+# Testfälle:
 print(is_leap_year(2022))  # Erwartete Ausgabe: False
 print(is_leap_year(2020))  # Erwartete Ausgabe: True
 print(is_leap_year(2000))  # Erwartete Ausgabe: True
 print(is_leap_year(1900))  # Erwartete Ausgabe: False
 
-### Docstrings
-# You can use docstrings to write multiline comments that document your code.
+## =====================================================
+##             Docstrings zur Dokumentation von Funktionen
+## =====================================================
 
-## Syntax
-# Just enclose your text inside a pair of three double quotes.
-# e.g.
+# Docstrings ermöglichen mehrzeilige Kommentare, die direkt unterhalb der Funktionsdefinition stehen und zur Dokumentation genutzt werden.
+# Sie erscheinen beispielsweise, wenn man mit der Maus über einen Funktionsaufruf fährt.
 
+## Syntax:
+# Schreibe deinen Kommentar zwischen dreifachen Anführungszeichen.
 """ 
 My 
 Multiline 
 Comment 
 """
 
-## Documenting Functions
-# A neat feature of docstrings is you can use it just below the definition of a function and that text will be displayed when you hover over a function call. 
-# It's a good way to remind yourself what a self-created function does.
-# e.g.
-
+## Documenting Functions:
+# Ein Beispiel für die Verwendung eines Docstrings zur Beschreibung einer Funktion:
 def my_function(num):
     """Multiplies a number by itself."""
     return num * num
